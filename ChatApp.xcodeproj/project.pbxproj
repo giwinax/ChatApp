@@ -13,6 +13,13 @@
 		3297FCB5282EAE8F0047ABD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3297FCB3282EAE8F0047ABD4 /* Main.storyboard */; };
 		3297FCB7282EAE8F0047ABD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3297FCB6282EAE8F0047ABD4 /* Assets.xcassets */; };
 		3297FCBA282EAE8F0047ABD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3297FCB8282EAE8F0047ABD4 /* LaunchScreen.storyboard */; };
+		3297FCC4282EC1BE0047ABD4 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCC3282EC1BE0047ABD4 /* Section.swift */; };
+		3297FCC6282EC1FE0047ABD4 /* MessagesDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCC5282EC1FE0047ABD4 /* MessagesDiffableDataSource.swift */; };
+		3297FCCD282EC39A0047ABD4 /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCCC282EC39A0047ABD4 /* MessageBubbleView.swift */; };
+		3297FCD1282EC6DF0047ABD4 /* MessageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCD0282EC6DF0047ABD4 /* MessageFetcher.swift */; };
+		3297FCD4282ECE200047ABD4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3297FCD3282ECE200047ABD4 /* Alamofire */; };
+		3297FCD9282ECEDD0047ABD4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 3297FCD8282ECEDD0047ABD4 /* SwiftyJSON */; };
+		3297FCDB282ED8240047ABD4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCDA282ED8240047ABD4 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,11 @@
 		3297FCB6282EAE8F0047ABD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3297FCB9282EAE8F0047ABD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3297FCBB282EAE8F0047ABD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3297FCC3282EC1BE0047ABD4 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		3297FCC5282EC1FE0047ABD4 /* MessagesDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDiffableDataSource.swift; sourceTree = "<group>"; };
+		3297FCCC282EC39A0047ABD4 /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
+		3297FCD0282EC6DF0047ABD4 /* MessageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFetcher.swift; sourceTree = "<group>"; };
+		3297FCDA282ED8240047ABD4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3297FCD9282ECEDD0047ABD4 /* SwiftyJSON in Frameworks */,
+				3297FCD4282ECE200047ABD4 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +70,60 @@
 		3297FCAC282EAE8F0047ABD4 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
-				3297FCAD282EAE8F0047ABD4 /* AppDelegate.swift */,
-				3297FCAF282EAE8F0047ABD4 /* SceneDelegate.swift */,
-				3297FCB1282EAE8F0047ABD4 /* ViewController.swift */,
-				3297FCB3282EAE8F0047ABD4 /* Main.storyboard */,
+				3297FCC7282EC21A0047ABD4 /* Model */,
+				3297FCC9282EC2660047ABD4 /* View */,
+				3297FCCB282EC2790047ABD4 /* Controller */,
+				3297FCC8282EC2550047ABD4 /* Resourses */,
 				3297FCB6282EAE8F0047ABD4 /* Assets.xcassets */,
-				3297FCB8282EAE8F0047ABD4 /* LaunchScreen.storyboard */,
 				3297FCBB282EAE8F0047ABD4 /* Info.plist */,
 			);
 			path = ChatApp;
+			sourceTree = "<group>";
+		};
+		3297FCC7282EC21A0047ABD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3297FCDA282ED8240047ABD4 /* Message.swift */,
+				3297FCC5282EC1FE0047ABD4 /* MessagesDiffableDataSource.swift */,
+				3297FCC3282EC1BE0047ABD4 /* Section.swift */,
+				3297FCD0282EC6DF0047ABD4 /* MessageFetcher.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3297FCC8282EC2550047ABD4 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				3297FCAD282EAE8F0047ABD4 /* AppDelegate.swift */,
+				3297FCAF282EAE8F0047ABD4 /* SceneDelegate.swift */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		3297FCC9282EC2660047ABD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3297FCCA282EC26B0047ABD4 /* Storyboard */,
+				3297FCCC282EC39A0047ABD4 /* MessageBubbleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3297FCCA282EC26B0047ABD4 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3297FCB3282EAE8F0047ABD4 /* Main.storyboard */,
+				3297FCB8282EAE8F0047ABD4 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3297FCCB282EC2790047ABD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3297FCB1282EAE8F0047ABD4 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +142,10 @@
 			dependencies = (
 			);
 			name = ChatApp;
+			packageProductDependencies = (
+				3297FCD3282ECE200047ABD4 /* Alamofire */,
+				3297FCD8282ECEDD0047ABD4 /* SwiftyJSON */,
+			);
 			productName = ChatApp;
 			productReference = 3297FCAA282EAE8F0047ABD4 /* ChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +174,10 @@
 				Base,
 			);
 			mainGroup = 3297FCA1282EAE8F0047ABD4;
+			packageReferences = (
+				3297FCD2282ECE200047ABD4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3297FCD7282ECEDD0047ABD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 3297FCAB282EAE8F0047ABD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,8 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3297FCC6282EC1FE0047ABD4 /* MessagesDiffableDataSource.swift in Sources */,
+				3297FCC4282EC1BE0047ABD4 /* Section.swift in Sources */,
 				3297FCB2282EAE8F0047ABD4 /* ViewController.swift in Sources */,
+				3297FCDB282ED8240047ABD4 /* Message.swift in Sources */,
+				3297FCD1282EC6DF0047ABD4 /* MessageFetcher.swift in Sources */,
 				3297FCAE282EAE8F0047ABD4 /* AppDelegate.swift in Sources */,
+				3297FCCD282EC39A0047ABD4 /* MessageBubbleView.swift in Sources */,
 				3297FCB0282EAE8F0047ABD4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +430,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3297FCD2282ECE200047ABD4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3297FCD7282ECEDD0047ABD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3297FCD3282ECE200047ABD4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3297FCD2282ECE200047ABD4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3297FCD8282ECEDD0047ABD4 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3297FCD7282ECEDD0047ABD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3297FCA2282EAE8F0047ABD4 /* Project object */;
 }
