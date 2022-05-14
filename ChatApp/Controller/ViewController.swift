@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController {
+class ViewController: UITableViewController {
     
     var messages = [Message]()
     
@@ -16,7 +16,7 @@ class ViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.dataSource = dataSource
+        tableView.dataSource = dataSource
         
         fetchMessages(by: 0)
         // Do any additional setup after loading the view.
@@ -48,19 +48,22 @@ class ViewController: UICollectionViewController {
     }
     
     // MARK: - Table view data source
-    func configureDataSource() -> UICollectionViewDiffableDataSource<Section, Message> {
+    func configureDataSource() -> UITableViewDiffableDataSource<Section, Message> {
         
-        return MessagesDiffableDataSource(
-            collectionView: collectionView,
-            cellProvider: {  collectionView, indexPath, message in
+        let cellIdentifier = "defaultcell"
+        
+        let dataSource = MessagesDiffableDataSource(
+            tableView: tableView,
+            cellProvider: {  tableView, indexPath, message in
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "defaultcell", for: indexPath) as! MessageBubbleView
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MessageBubbleView
                 
-                cell.message = message.text
+                cell.textLabel?.text = message.text
                 
                 return cell
             }
         )
+        return dataSource
     }
     
 }
