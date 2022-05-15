@@ -24,11 +24,15 @@ class MessageFetcher {
                 let decodedResults = jsonedValue["result"]
                 for i in offset...offset + 20 {
                     tempArr.append(Message(id: String(i), text: decodedResults[i].stringValue))
+                    //["result"].arrayValue.map { Message(text: $0.stringValue)}))
+                    
+                    
                 }
-                
+                let decodedResultsMapped = zip(offset...offset + 20, jsonedValue["result"]).map { Message(id: String($0.0), text: $0.1.1.stringValue) }
+                //zip([offset...offset+20], jsonedValue["result"]).map { Message(id: String($0), text: $1.0) }
 //                if decodedResults != [] {
                 
-                completion(.success(tempArr))
+                completion(.success(decodedResultsMapped))
 //                }
 //                else if response.error != nil{
 //

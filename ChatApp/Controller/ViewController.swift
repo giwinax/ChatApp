@@ -32,9 +32,9 @@ class ViewController: UITableViewController, AlertDisplayer {
     }
     
     func fetchMessages(by offset: Int) {
-        guard !isFetching else {
-          return
-        }
+//        guard !isFetching else {
+//          return
+//        }
         
         isFetching = true
         let mf = MessageFetcher()
@@ -83,7 +83,7 @@ class ViewController: UITableViewController, AlertDisplayer {
                 cell.messageLabel?.numberOfLines = 0
                 
                 cell.id = message.id
-                print(cell.id)
+               
 //                cell.bounds = cell.bounds.insetBy(dx: 0, dy: 20.0);
                 
                 return cell
