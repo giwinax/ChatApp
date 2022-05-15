@@ -20,11 +20,15 @@ class MessageFetcher {
                 
                 let jsonedValue = JSON(value)
                 
-                let decodedResults = jsonedValue["result"].arrayValue.map { Message(text: $0.stringValue)}
-                    
+                var tempArr = [Message]()
+                let decodedResults = jsonedValue["result"]
+                for i in offset...offset + 20 {
+                    tempArr.append(Message(id: String(i), text: decodedResults[i].stringValue))
+                }
+                
 //                if decodedResults != [] {
                 
-                completion(.success(decodedResults))
+                completion(.success(tempArr))
 //                }
 //                else if response.error != nil{
 //
@@ -38,7 +42,7 @@ class MessageFetcher {
             
             case .failure(let error):
                 var tempArr = [Message]()
-                for i in offset...offset+20 {
+                for i in offset...offset + 20 {
                     tempArr.append(Message(id: String(i), text: "Error loading from server, press to retry"))
                 }
                 completion(.success(tempArr))
@@ -47,7 +51,5 @@ class MessageFetcher {
             
         }
     }
-    
-
 }
 

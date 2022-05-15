@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UITableViewController, AlertDisplayer {
     
@@ -14,6 +15,8 @@ class ViewController: UITableViewController, AlertDisplayer {
     var messages = [Message]()
     
     lazy var dataSource = configureDataSource()
+    
+    var isFetching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +28,15 @@ class ViewController: UITableViewController, AlertDisplayer {
         tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         tableView.separatorStyle = .none
-        
-        tableView.allowsSelection = true
+    
     }
     
     func fetchMessages(by offset: Int) {
+        guard !isFetching else {
+          return
+        }
         
+        isFetching = true
         let mf = MessageFetcher()
         
         mf.fetchMessages(offset: offset, completion: { (result) in
@@ -38,7 +44,7 @@ class ViewController: UITableViewController, AlertDisplayer {
             switch result {
                 
             case .success(let res):
-                
+                self.isFetching = false
                 self.messages.append(contentsOf: res)
                 
                 var snapshot = NSDiffableDataSourceSnapshot<Section, Message>()
@@ -49,6 +55,7 @@ class ViewController: UITableViewController, AlertDisplayer {
                 self.dataSource.apply(snapshot, animatingDifferences: false)
                 
             case .failure(let error):
+                self.isFetching = false
                 self.displayAlert(message: error.localizedDescription)
             }
         })
@@ -76,7 +83,7 @@ class ViewController: UITableViewController, AlertDisplayer {
                 cell.messageLabel?.numberOfLines = 0
                 
                 cell.id = message.id
-                
+                print(cell.id)
 //                cell.bounds = cell.bounds.insetBy(dx: 0, dy: 20.0);
                 
                 return cell
@@ -86,30 +93,19 @@ class ViewController: UITableViewController, AlertDisplayer {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.tableView(tableView, heightForRowAt: indexPath)
+        print("asdasd")
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        // calculates where the user is in the y-axis
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
 
         if offsetY > contentHeight - scrollView.frame.size.height {
 
-            // increments the number of the page to request
             offsetIndex += 20
-
-            // call your API for more data
+            
             fetchMessages(by: offsetIndex)
-
-            // tell the table view to reload with the new data
-            self.tableView.reloadData()
         }
     }
     

@@ -19,7 +19,6 @@ class MessageBubbleView: UITableViewCell {
         
         self.messageLabel?.textColor = .white
         
-
     }
 
 
