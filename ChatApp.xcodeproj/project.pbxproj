@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32053D422831044100C9536D /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32053D412831044100C9536D /* AlertDisplayer.swift */; };
 		3297FCAE282EAE8F0047ABD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCAD282EAE8F0047ABD4 /* AppDelegate.swift */; };
 		3297FCB0282EAE8F0047ABD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCAF282EAE8F0047ABD4 /* SceneDelegate.swift */; };
 		3297FCB2282EAE8F0047ABD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297FCB1282EAE8F0047ABD4 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32053D412831044100C9536D /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
 		3297FCAA282EAE8F0047ABD4 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3297FCAD282EAE8F0047ABD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3297FCAF282EAE8F0047ABD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32053D432831047C00C9536D /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				32053D412831044100C9536D /* AlertDisplayer.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		3297FCA1282EAE8F0047ABD4 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		3297FCAC282EAE8F0047ABD4 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				32053D432831047C00C9536D /* Extentions */,
 				3297FCC7282EC21A0047ABD4 /* Model */,
 				3297FCC9282EC2660047ABD4 /* View */,
 				3297FCCB282EC2790047ABD4 /* Controller */,
@@ -211,6 +222,7 @@
 				3297FCDB282ED8240047ABD4 /* Message.swift in Sources */,
 				3297FCD1282EC6DF0047ABD4 /* MessageFetcher.swift in Sources */,
 				3297FCAE282EAE8F0047ABD4 /* AppDelegate.swift in Sources */,
+				32053D422831044100C9536D /* AlertDisplayer.swift in Sources */,
 				3297FCCD282EC39A0047ABD4 /* MessageBubbleView.swift in Sources */,
 				3297FCB0282EAE8F0047ABD4 /* SceneDelegate.swift in Sources */,
 			);

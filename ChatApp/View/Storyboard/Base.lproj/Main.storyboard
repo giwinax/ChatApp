@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Be9-zX-mKh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20037"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,13 +16,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="defaultcell" id="i6q-T6-Asv" customClass="MessageBubbleView" customModule="ChatApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="defaultcell" id="i6q-T6-Asv" customClass="MessageBubbleView" customModule="ChatApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="63.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i6q-T6-Asv" id="fnd-nO-4aV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1Z-39-bFs">
+                                            <rect key="frame" x="25" y="21" width="364" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="L1Z-39-bFs" firstAttribute="top" secondItem="fnd-nO-4aV" secondAttribute="topMargin" constant="10" id="1ml-y4-NdD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="L1Z-39-bFs" secondAttribute="bottom" constant="10" id="DM9-DV-udM"/>
+                                        <constraint firstItem="L1Z-39-bFs" firstAttribute="leading" secondItem="fnd-nO-4aV" secondAttribute="leadingMargin" constant="5" id="Y3g-U7-WZW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="L1Z-39-bFs" secondAttribute="trailing" constant="5" id="YZi-CJ-ucO"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="messageLabel" destination="L1Z-39-bFs" id="SzC-cw-8iB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

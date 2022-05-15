@@ -8,5 +8,17 @@
 import UIKit
 
 class MessageBubbleView: UITableViewCell {
-    var message: String = ""
+    @IBOutlet weak var messageLabel: UILabel!
+        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.messageLabel?.layer.backgroundColor = UIColor.systemBlue.cgColor
+        
+        self.messageLabel?.textColor = .white
+        
+
+    }
+
+
 }

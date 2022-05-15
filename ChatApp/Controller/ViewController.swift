@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, AlertDisplayer {
+    
+    var offsetIndex = 0
     
     var messages = [Message]()
     
@@ -18,11 +20,17 @@ class ViewController: UITableViewController {
         
         tableView.dataSource = dataSource
         
-        fetchMessages(by: 0)
-        // Do any additional setup after loading the view.
+        fetchMessages(by: offsetIndex)
+        
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        
+        tableView.separatorStyle = .none
+        
+        tableView.allowsSelection = true
     }
     
     func fetchMessages(by offset: Int) {
+        
         let mf = MessageFetcher()
         
         mf.fetchMessages(offset: offset, completion: { (result) in
@@ -31,7 +39,7 @@ class ViewController: UITableViewController {
                 
             case .success(let res):
                 
-                self.messages = res
+                self.messages.append(contentsOf: res)
                 
                 var snapshot = NSDiffableDataSourceSnapshot<Section, Message>()
                 
@@ -41,10 +49,14 @@ class ViewController: UITableViewController {
                 self.dataSource.apply(snapshot, animatingDifferences: false)
                 
             case .failure(let error):
-                
-                print(error)
+                self.displayAlert(message: error.localizedDescription)
             }
         })
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+        
     }
     
     // MARK: - Table view data source
@@ -58,12 +70,46 @@ class ViewController: UITableViewController {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MessageBubbleView
                 
-                cell.textLabel?.text = message.text
+                cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+                
+                cell.messageLabel?.text = message.text
+                cell.messageLabel?.numberOfLines = 0
+                
+                
+//                cell.bounds = cell.bounds.insetBy(dx: 0, dy: 20.0);
                 
                 return cell
             }
         )
         return dataSource
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("test")
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY > contentHeight - scrollView.frame.size.height {
+
+            // increments the number of the page to request
+            offsetIndex += 20
+
+            // call your API for more data
+            fetchMessages(by: offsetIndex)
+
+            // tell the table view to reload with the new data
+            self.tableView.reloadData()
+        }
     }
     
 }

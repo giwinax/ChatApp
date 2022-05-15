@@ -6,6 +6,7 @@
 //
 import Alamofire
 import SwiftyJSON
+import Foundation
 
 class MessageFetcher {
     
@@ -16,16 +17,33 @@ class MessageFetcher {
             switch response.result {
             
             case .success(let value):
-            
-                completion(.success(JSON(value)["result"].arrayValue.map { Message(text: $0.stringValue)}))
+                
+                let jsonedValue = JSON(value)
+                
+                let decodedResults = jsonedValue["result"].arrayValue.map { Message(text: $0.stringValue)}
+                    
+//                if decodedResults != [] {
+                
+                completion(.success(decodedResults))
+//                }
+//                else if response.error != nil{
+//
+//                    completion(.success([Message(text: "error loading from server, press to retry")]))
+//                }
+//                else if decodedResults.isEmpty {
+//
+//               completion(.success([Message(text: "nothing to load")]))
+//
+//                }
             
             case .failure(let error):
-            
+                completion(.success([Message(id: String(offset), text: "Error loading from server, press to retry")]))
                 completion(.failure(error))
             }
             
         }
     }
     
+
 }
 
