@@ -75,6 +75,7 @@ class ViewController: UITableViewController, AlertDisplayer {
                 cell.messageLabel?.text = message.text
                 cell.messageLabel?.numberOfLines = 0
                 
+                cell.id = message.id
                 
 //                cell.bounds = cell.bounds.insetBy(dx: 0, dy: 20.0);
                 
@@ -85,7 +86,7 @@ class ViewController: UITableViewController, AlertDisplayer {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("test")
+    
     }
     
     

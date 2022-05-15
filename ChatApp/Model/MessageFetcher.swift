@@ -37,7 +37,11 @@ class MessageFetcher {
 //                }
             
             case .failure(let error):
-                completion(.success([Message(id: String(offset), text: "Error loading from server, press to retry")]))
+                var tempArr = [Message]()
+                for i in offset...offset+20 {
+                    tempArr.append(Message(id: String(i), text: "Error loading from server, press to retry"))
+                }
+                completion(.success(tempArr))
                 completion(.failure(error))
             }
             
