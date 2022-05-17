@@ -10,7 +10,10 @@ import UIKit
 class MessageBubbleView: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+   
     var id = ""
+    var loaded = false
         
     override func awakeFromNib() {
         super.awakeFromNib()

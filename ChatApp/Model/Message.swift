@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Message: Identifiable, Codable, Hashable {
+struct Message: Identifiable, Hashable {
     
     var id = UUID().uuidString
     
-    private enum CodingKeys : String, CodingKey { case text }
+    var loaded = true
     
-    var text: String
+    var text: String?
     
 }

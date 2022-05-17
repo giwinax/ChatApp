@@ -29,6 +29,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0Ms-VZ-zre">
+                                            <rect key="frame" x="197" y="22" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="L1Z-39-bFs" firstAttribute="top" secondItem="fnd-nO-4aV" secondAttribute="topMargin" constant="10" id="1ml-y4-NdD"/>
@@ -38,6 +42,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="loadingIndicator" destination="0Ms-VZ-zre" id="L9T-wH-4Gv"/>
                                     <outlet property="messageLabel" destination="L1Z-39-bFs" id="SzC-cw-8iB"/>
                                 </connections>
                             </tableViewCell>
