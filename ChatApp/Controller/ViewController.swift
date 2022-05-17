@@ -151,7 +151,7 @@ class ViewController: UITableViewController, AlertDisplayer {
         if offsetY > contentHeight - scrollView.frame.size.height {
             
             offsetIndex += 20
-            if !endOfDataError {
+            if !isEndOfData {
             fetchMessages(by: offsetIndex)
             }
         }
